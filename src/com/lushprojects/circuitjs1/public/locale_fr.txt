@@ -1,4 +1,4 @@
-"Output Function"="Fonction de transfert"
+﻿"Output Function"="Fonction de transfert"
 "Definition"="Définition"
 "&nbsp;</div>Outputs and Labels"="&nbsp;</DIV>Sorties et Etiquettes"
 "Need to ground transmission line!"="Besoin de mettre à la terre la ligne de transmission!"

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CircuitJS1 - 黑白简约UI演示</title>
+    <style>
+        /* 使用与circuitjs.html相同的黑白简约样式 */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 40px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background: #ffffff;
+            color: #171717;
+        }
+
+        h1 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: #000000;
+            margin-bottom: 32px;
+            border-bottom: 2px solid #e5e5e5;
+            padding-bottom: 12px;
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: #000000;
+            margin-top: 32px;
+            margin-bottom: 16px;
+        }
+
+        .demo-section {
+            margin-bottom: 40px;
+            padding: 24px;
+            border: 1px solid #e5e5e5;
+            border-radius: 4px;
+            background: #fafafa;
+        }
+
+        /* 按钮样式 */
+        .button {
+            padding: 6px 14px;
+            margin: 4px;
+            border: 1px solid #e5e5e5;
+            border-radius: 4px;
+            background: #ffffff;
+            color: #171717;
+            font-size: 13px;
+            font-weight: 400;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            display: inline-block;
+        }
+
+        .button:hover {
+            background: #fafafa;
+            border-color: #d4d4d4;
+        }
+
+        .button:active {
+            background: #f5f5f5;
+        }
+
+        .button.selected {
+            background: #000000;
+            border-color: #000000;
+            color: #ffffff;
+            font-weight: 500;
+        }
+
+        .button.selected:hover {
+            background: #262626;
+        }
+
+        /* 输入框样式 */
+        .input {
+            padding: 6px 10px;
+            border: 1px solid #e5e5e5;
+            border-radius: 4px;
+            font-size: 13px;
+            font-family: inherit;
+            transition: all 0.15s ease;
+            background: #ffffff;
+            color: #171717;
+            margin: 4px;
+        }
+
+        .input:hover {
+            border-color: #d4d4d4;
+        }
+
+        .input:focus {
+            outline: none;
+            border-color: #000000;
+            box-shadow: 0 0 0 1px #000000;
+        }
+
+        /* 菜单样式 */
+        .menu {
+            background: #ffffff;
+            border: 1px solid #e5e5e5;
+            border-radius: 4px;
+            padding: 8px;
+            display: inline-block;
+        }
+
+        .menu-item {
+            padding: 6px 12px;
+            border-radius: 2px;
+            cursor: pointer;
+            transition: background-color 0.15s ease;
+            margin: 2px 0;
+        }
+
+        .menu-item:hover {
+            background-color: #f5f5f5;
+        }
+
+        /* 颜色展示 */
+        .color-palette {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .color-box {
+            padding: 20px;
+            border: 1px solid #e5e5e5;
+            border-radius: 4px;
+            text-align: center;
+            font-size: 12px;
+        }
+
+        code {
+            background: #f5f5f5;
+            padding: 2px 4px;
+            border-radius: 2px;
+            font-family: monospace;
+            font-size: 12px;
+        }
+
+        .info {
+            background: #fafafa;
+            border: 1px solid #e5e5e5;
+            padding: 16px;
+            border-radius: 4px;
+            margin-top: 20px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <h1>CircuitJS1 - 黑白简约UI演示</h1>
+
+    <div class="info">
+        ✨ 这是一个演示页面，展示CircuitJS1新的黑白简约UI设计系统。<br>
+        所有样式都采用纯黑白灰配色，参考了 Tailwind UI、Shadcn UI 等现代开源组件库。
+    </div>
+
+    <h2>颜色系统</h2>
+    <div class="demo-section">
+        <div class="color-palette">
+            <div class="color-box" style="background: #000000; color: #ffffff;">
+                <strong>纯黑</strong><br>
+                #000000<br>
+                选中、标题
+            </div>
+            <div class="color-box" style="background: #171717; color: #ffffff;">
+                <strong>深灰</strong><br>
+                #171717<br>
+                正文文字
+            </div>
+            <div class="color-box" style="background: #737373; color: #ffffff;">
+                <strong>中灰</strong><br>
+                #737373<br>
+                次要文字
+            </div>
+            <div class="color-box" style="background: #a3a3a3; color: #ffffff;">
+                <strong>浅灰</strong><br>
+                #a3a3a3<br>
+                禁用状态
+            </div>
+            <div class="color-box" style="background: #e5e5e5;">
+                <strong>边框灰</strong><br>
+                #e5e5e5<br>
+                边框线条
+            </div>
+            <div class="color-box" style="background: #f5f5f5;">
+                <strong>极浅灰</strong><br>
+                #f5f5f5<br>
+                悬停背景
+            </div>
+            <div class="color-box" style="background: #fafafa;">
+                <strong>背景灰</strong><br>
+                #fafafa<br>
+                代码背景
+            </div>
+            <div class="color-box" style="background: #ffffff; border: 2px solid #000;">
+                <strong>纯白</strong><br>
+                #ffffff<br>
+                主背景
+            </div>
+        </div>
+    </div>
+
+    <h2>按钮</h2>
+    <div class="demo-section">
+        <button class="button">默认按钮</button>
+        <button class="button" onmouseover="this.style.background='#fafafa'" onmouseout="this.style.background='#ffffff'">悬停我</button>
+        <button class="button selected">选中状态</button>
+        <button class="button" disabled style="opacity: 0.5; cursor: not-allowed;">禁用按钮</button>
+    </div>
+
+    <h2>输入框</h2>
+    <div class="demo-section">
+        <input type="text" class="input" placeholder="默认状态" style="width: 200px;">
+        <input type="text" class="input" placeholder="点击我查看焦点效果" style="width: 200px;">
+    </div>
+
+    <h2>菜单</h2>
+    <div class="demo-section">
+        <div class="menu">
+            <div class="menu-item">文件</div>
+            <div class="menu-item">编辑</div>
+            <div class="menu-item">查看</div>
+            <div class="menu-item">帮助</div>
+        </div>
+    </div>
+
+    <h2>设计特点</h2>
+    <div class="demo-section">
+        <ul style="margin: 0; padding-left: 20px; line-height: 1.8;">
+            <li><strong>纯黑白灰</strong> - 无任何彩色</li>
+            <li><strong>极小圆角</strong> - 2-4px，接近直角</li>
+            <li><strong>快速过渡</strong> - 0.15秒响应</li>
+            <li><strong>无阴影</strong> - 扁平设计</li>
+            <li><strong>功能优先</strong> - 极简主义</li>
+        </ul>
+    </div>
+
+    <h2>交互测试</h2>
+    <div class="demo-section">
+        <p>尝试以下交互：</p>
+        <ol style="margin: 16px 0; padding-left: 20px; line-height: 1.8;">
+            <li>悬停在按钮上 - 应该看到轻微的灰色变化</li>
+            <li>点击输入框 - 边框应该变成纯黑色</li>
+            <li>悬停在菜单项上 - 应该看到浅灰背景</li>
+            <li>选中状态的按钮 - 纯黑底白字</li>
+        </ol>
+
+        <button class="button" onclick="this.classList.toggle('selected')">
+            点击切换选中状态
+        </button>
+    </div>
+
+    <div class="info" style="margin-top: 40px;">
+        <strong>📝 注意：</strong><br>
+        这只是一个样式演示页面。要查看完整的CircuitJS1应用，请访问：
+        <code>circuitjs.html</code>
+    </div>
+
+</body>
+</html>

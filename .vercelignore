@@ -1,0 +1,31 @@
+# Vercel部署忽略文件
+
+# 源代码（不需要部署）
+src/
+.settings/
+.classpath
+.project
+
+# 构建工具
+*.gwt.xml
+
+# 测试文件
+tests/
+
+# 文档（可选）
+CONTRIBUTING.md
+INTERNALS.md
+
+# Git
+.git/
+.gitignore
+
+# IDE
+.vscode/
+.idea/
+*.iml
+
+# 临时文件
+*.log
+*.tmp
+node_modules/

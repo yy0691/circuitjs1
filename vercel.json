@@ -1,0 +1,51 @@
+{
+  "version": 2,
+  "name": "circuitjs1",
+  "builds": [
+    {
+      "src": "war/**",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/",
+      "dest": "/war/index.html"
+    },
+    {
+      "src": "/circuitjs.html",
+      "dest": "/war/circuitjs.html"
+    },
+    {
+      "src": "/about.html",
+      "dest": "/war/about.html"
+    },
+    {
+      "src": "/ui-demo.html",
+      "dest": "/war/ui-demo.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/war/$1"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        }
+      ]
+    }
+  ]
+}

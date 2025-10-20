@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CircuitJS1 - 电路仿真器</title>
+    <meta name="description" content="在线电路仿真器 - 设计和测试电子电路">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            background: #000000;
+        }
+
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            z-index: 9999;
+            transition: opacity 0.3s ease;
+        }
+
+        .loading.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid #333333;
+            border-top-color: #ffffff;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #a3a3a3;
+        }
+
+        .iframe-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+
+        .error-message {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #ffffff;
+            border: 1px solid #e5e5e5;
+            border-radius: 4px;
+            padding: 30px;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 10000;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        .error-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #000000;
+            margin-bottom: 12px;
+        }
+
+        .error-text {
+            font-size: 14px;
+            color: #737373;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .error-button {
+            padding: 8px 16px;
+            background: #000000;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background 0.15s ease;
+        }
+
+        .error-button:hover {
+            background: #262626;
+        }
+    </style>
+</head>
+<body>
+    <div class="loading" id="loading">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">正在加载电路仿真器...</div>
+    </div>
+
+    <div class="error-message" id="errorMessage">
+        <div class="error-title">加载失败</div>
+        <div class="error-text">
+            无法加载电路仿真器。请检查网络连接并刷新页面重试。
+        </div>
+        <button class="error-button" onclick="location.reload()">刷新页面</button>
+    </div>
+
+    <div class="iframe-container">
+        <iframe
+            id="circuitFrame"
+            src="https://www.falstad.com/circuit/circuitjs.html"
+            allow="fullscreen"
+            loading="eager">
+        </iframe>
+    </div>
+
+    <script>
+        const iframe = document.getElementById('circuitFrame');
+        const loading = document.getElementById('loading');
+        const errorMessage = document.getElementById('errorMessage');
+        let loadTimeout;
+
+        loadTimeout = setTimeout(() => {
+            loading.classList.add('hidden');
+            errorMessage.classList.add('show');
+        }, 15000);
+
+        iframe.addEventListener('load', () => {
+            clearTimeout(loadTimeout);
+            setTimeout(() => {
+                loading.classList.add('hidden');
+            }, 500);
+        });
+
+        iframe.addEventListener('error', () => {
+            clearTimeout(loadTimeout);
+            loading.classList.add('hidden');
+            errorMessage.classList.add('show');
+        });
+    </script>
+</body>
+</html>
